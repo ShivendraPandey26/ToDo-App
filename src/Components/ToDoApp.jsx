@@ -19,7 +19,7 @@ function ToDoApp() {
 
   return (
     <>
-      <div className="w-[80%] md:w-[40%] h-auto text-center mx-auto my-[10%] md:my-[5%] rounded-lg bg-slate-50">
+      <div className="w-[80%] md:w-[40%] h-auto text-center mx-auto my-[10%] md:my-[5%] rounded-lg bg-gray-200">
         <h1 className="text-3xl font-bold font-sans underline underline-offset-8 p-10">
           ToDo App
         </h1>
@@ -40,6 +40,11 @@ function ToDoApp() {
             Add
           </button>
         </div>
+        
+
+        {Task <= 1 && <h1 className="text-xl mt-10">
+        "Welcome! Let's add a to-do list."
+        </h1>}
 
         <ToDoList 
         task={Task} 
