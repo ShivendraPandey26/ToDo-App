@@ -1,7 +1,22 @@
+import { useState } from "react";
 import React from "react";
 import ToDoList from "./ToDoList";
+import { v4 as uuidv4 } from 'uuid';
 
 function ToDoApp() {
+  const [userInput, setUserInput] = useState("");
+  const [Task, setTask] = useState([]);
+
+  const handleValue = () => {
+    if (userInput === "") {
+      alert("You must write something!!!");
+    } else {
+      const allInputs = {id: uuidv4(), title : userInput, complete: false}
+      setTask([...Task, allInputs]);
+      setUserInput("");
+    }
+  };
+
   return (
     <>
       <div className="w-[80%] md:w-[40%] h-auto text-center mx-auto my-[10%] md:my-[5%] rounded-lg bg-slate-50">
@@ -15,12 +30,21 @@ function ToDoApp() {
             name="input place"
             className="w-[80%] h-10 rounded-lg mx-auto p-5 font-semibold border-2"
             placeholder="Add items"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
           />
-          <button className="w-[80%] h-10 rounded-lg mx-auto m-5 bg-violet-600 text-white text-xl font-bold hover:bg-violet-800 duration-300 ease-in-out">
+          <button
+            className="w-[80%] h-10 rounded-lg mx-auto m-5 bg-violet-600 text-white text-xl font-bold hover:bg-violet-800 duration-300 ease-in-out"
+            onClick={handleValue}
+          >
             Add
           </button>
         </div>
-        <ToDoList />
+
+        <ToDoList 
+        task={Task} 
+        setTask = {setTask}
+        />
       </div>
     </>
   );
