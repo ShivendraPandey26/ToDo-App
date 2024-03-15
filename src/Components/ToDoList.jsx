@@ -19,6 +19,11 @@ function ToDoList({ task, setTask }) {
     );
   };
 
+  const handleClear = () => {
+    alert("DO YOU WANT TO CLEAR THE PAGE");    
+    setTask([]);
+  }
+
   return (
     <>
       <ul className="flex justify-center items-center flex-col gap-5 p-5">
@@ -31,7 +36,7 @@ function ToDoList({ task, setTask }) {
           >
             <div>
               <span
-                className="mx-3 text-lg cursor-pointer"
+                className="mx-3 text-lg cursor-pointer   rounded-[100%] hover:text-white hover:bg-black  duration-300 ease-in-out"
                 onClick={() => handleDoneMark(item.id)}
               >
                 <i className="fas fa-check-circle"></i>
@@ -40,11 +45,11 @@ function ToDoList({ task, setTask }) {
               <span>{item.title}</span>
             </div>
             <div>
-              <span className="mx-3 text-xl cursor-pointer">
+              <span className="mx-3 text-xl cursor-pointer hover:text-violet-800 duration-300 ease-in-out">
                 <i className="fas fa-pen"></i>
               </span>
               <span
-                className="mx-3 text-xl cursor-pointer"
+                className="mx-3 text-xl cursor-pointer hover:text-red-600 duration-300 ease-in-out"
                 onClick={() => handleRemove(item.id)}
               >
                 <i className="fas fa-trash"></i>
@@ -53,6 +58,11 @@ function ToDoList({ task, setTask }) {
           </li>
         ))}
       </ul>
+
+      {task.length >= 1 && 
+      <button className="w-[40%] h-10 rounded-lg mx-auto m-5 bg-red-600 text-white text-xl font-bold hover:bg-red-800 duration-300 ease-in-out"
+      onClick={handleClear}
+      >Clear</button>}
     </>
   );
 }
