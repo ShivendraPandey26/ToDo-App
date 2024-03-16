@@ -17,6 +17,13 @@ function ToDoApp() {
     }
   };
 
+  const keydown = (e) => {
+    // console.log(e.key);
+    if(e.key == 'Enter') {
+      handleValue();
+    }
+  }
+
   return (
     <>
       <div className="w-[80%] md:w-[40%] h-auto text-center mx-auto my-[10%] md:my-[5%] rounded-lg bg-gray-200">
@@ -32,7 +39,8 @@ function ToDoApp() {
             placeholder="Add items"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-          />
+            onKeyDown={keydown}
+            />
           <button
             className="w-[80%] h-10 rounded-lg mx-auto m-5 bg-violet-600 text-white text-xl font-bold hover:bg-violet-800 duration-300 ease-in-out"
             onClick={handleValue}
