@@ -45,9 +45,9 @@ function ToDoList({ task, setTask }) {
               <span>{item.title}</span>
             </div>
             <div>
-              <span className="mx-3 text-xl cursor-pointer hover:text-violet-800 duration-300 ease-in-out">
+              {/* <span className="mx-3 text-xl cursor-pointer hover:text-violet-800 duration-300 ease-in-out">
                 <i className="fas fa-pen"></i>
-              </span>
+              </span> */}
               <span
                 className="mx-3 text-xl cursor-pointer hover:text-red-600 duration-300 ease-in-out"
                 onClick={() => handleRemove(item.id)}
